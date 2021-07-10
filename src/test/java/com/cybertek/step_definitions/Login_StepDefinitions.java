@@ -1,5 +1,6 @@
 package com.cybertek.step_definitions;
 
+import io.cucumber.java.en.And;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
@@ -21,5 +22,12 @@ public class Login_StepDefinitions {
     public void user_should_see_the_dashboard() {
         System.out.println("User sees the dashboard");
     }
-
+    @And("user enters student password")
+    public void userEntersStudentPassword() {
+        System.out.println("User enters student password");
+    }
+    @When("user enters student username")
+    public void userEntersStudentUsername() {
+        System.out.println("User enters student username");
+    }
 }
