@@ -40,6 +40,8 @@ public class DataTables_StepDefinitions {
     }
     @Then("user should see title is something")
     public void user_should_see_title_is_something() {
-        System.out.println("Title verification");
+        String actualTitle = Driver.getDriver().getTitle();
+        String expectedTitle = "Library";
+
     }
 }
