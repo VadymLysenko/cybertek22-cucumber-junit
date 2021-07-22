@@ -20,6 +20,6 @@ Feature: Examples of Cucumber data table implementation
   Scenario: Library login example using data table
     Given user is on thr login page of library app
     When user enters username and password as below
-    |username|librarian23@library.com|
-    |password|9rf6axdD       |
+      | username | librarian13@library.com |
+      | password | 9rf6axdD                |
     Then user should see title is something
