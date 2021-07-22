@@ -52,5 +52,10 @@ public class Wiki_StepDefinitions {
     @Then("User sees {string} is in the main header")
     public void userSeesIsInTheMainHeader(String arg0) {
 
+
+        String expectedHeader = arg0;
+        String actualHeader = wikiSearchPage.mainHeader.getText();
+
+        Assert.assertEquals(expectedHeader,actualHeader);
     }
 }

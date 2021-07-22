@@ -29,7 +29,7 @@ public class Hooks {
         }
 
         System.out.println("---Teardown steps are being applied...");
-        //Driver.closeDriver();
+        Driver.closeDriver();
     }
 
     @BeforeStep
