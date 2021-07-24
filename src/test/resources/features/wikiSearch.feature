@@ -17,7 +17,7 @@ Feature: Wikipedia search functionality
     And User clicks wiki search button
     Then User sees "Steve Jobs" is in the main header
 
-  @ScenarioOutline
+  @scenarioOutline
   Scenario Outline: Wikipedia Search Functionality Header Verification
     Given User is on Wikipedia home page
     When User types "<searchValue>" in the wiki search box
