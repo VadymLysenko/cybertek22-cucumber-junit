@@ -16,14 +16,14 @@ public class Driver {
     Making our driver instance private so that it is not reachable from outside of the class
     We make it static, because we want it run it before everything else, and we will use it in static method
      */
-    private static WebDriver driver;
+    private static ThreadLocal<WebDriver> driverPool = new ThreadLocal<>();
 
     /*
 
     Creating re-usable utility method that will return same 'driver' instance everytime we call it
      */
     public static WebDriver getDriver() {
-        if(driver==null){
+        if(driverPool.get()==null){
 
             /*
             We reed our browser type from conf.prop file using
@@ -39,15 +39,15 @@ public class Driver {
             switch (browserType) {
                 case "chrome":
                     WebDriverManager.chromedriver().setup();
-                    driver = new ChromeDriver();
-                    driver.manage().window().maximize();
-                    driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
+                    driverPool.set(new ChromeDriver());
+                    driverPool.get().manage().window().maximize();
+                    driverPool.get().manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
                     break;
                 case "firefox":
                     WebDriverManager.firefoxdriver().setup();
-                    driver = new FirefoxDriver();
-                    driver.manage().window().maximize();
-                    driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
+                    driverPool.set(new FirefoxDriver());
+                    driverPool.get().manage().window().maximize();
+                    driverPool.get().manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
                     break;
 
             }
@@ -56,12 +56,12 @@ public class Driver {
 
         same driver instance will be return all the time we will call Driver.getDriver(); method
          */
-        return driver;
+        return driverPool.get();
     }
     public static void closeDriver() {
-        if (driver != null) {
-            driver.quit();
-            driver = null;
+        if (driverPool.get() != null) {
+            driverPool.get().quit();
+            driverPool.remove();
         }
     }
 
