@@ -1,11 +1,17 @@
 package com.cybertek.utilities;
 
+import org.junit.Assert;
 import org.openqa.selenium.WebElement;
 
 import java.util.ArrayList;
 import java.util.List;
 
 public class BrowserUtils {
+
+    public static void assertTitle(String expectedTitle){
+        String actualTitle = Driver.getDriver().getTitle();
+        Assert.assertEquals(expectedTitle, actualTitle);
+    }
 
     /** This method accepts List<WebElements> and returns List<String>
      * @param webElementList
