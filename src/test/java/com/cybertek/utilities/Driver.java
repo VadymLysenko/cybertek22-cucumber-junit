@@ -23,33 +23,36 @@ public class Driver {
     Creating re-usable utility method that will return same 'driver' instance everytime we call it
      */
     public static WebDriver getDriver() {
-        if(driverPool.get()==null){
+        if(driverPool.get()==null) {
+
+            synchronized (Driver.class) {
 
             /*
             We reed our browser type from conf.prop file using
             .getProperty method we creating in ConfReader class
              */
 
-            String browserType = ConfigurationReader.getProperty("browser");
+                String browserType = ConfigurationReader.getProperty("browser");
             /*
 
             Depending on the browser type our switch statement will determine
             to open specific type of browser/driver
              */
-            switch (browserType) {
-                case "chrome":
-                    WebDriverManager.chromedriver().setup();
-                    driverPool.set(new ChromeDriver());
-                    driverPool.get().manage().window().maximize();
-                    driverPool.get().manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
-                    break;
-                case "firefox":
-                    WebDriverManager.firefoxdriver().setup();
-                    driverPool.set(new FirefoxDriver());
-                    driverPool.get().manage().window().maximize();
-                    driverPool.get().manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
-                    break;
+                switch (browserType) {
+                    case "chrome":
+                        WebDriverManager.chromedriver().setup();
+                        driverPool.set(new ChromeDriver());
+                        driverPool.get().manage().window().maximize();
+                        driverPool.get().manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
+                        break;
+                    case "firefox":
+                        WebDriverManager.firefoxdriver().setup();
+                        driverPool.set(new FirefoxDriver());
+                        driverPool.get().manage().window().maximize();
+                        driverPool.get().manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
+                        break;
 
+                }
             }
         }
         /*
