@@ -16,7 +16,7 @@ public class ExelRead {
     @Test
     public void read_from_exel_file() throws IOException {
 
-        String path = "SampleData.numbers";
+        String path = "SampleData.xlsx";
 
         // to be able to read from exel file,
         //we need to load in into FileInputStream
@@ -35,6 +35,20 @@ public class ExelRead {
         // Indexes start from 0
         System.out.println("sheet.getRow(1).getCell(0) = " + sheet.getRow(1).getCell(0));
 
+        System.out.println("sheet.getRow(3).getCell(2) = " + sheet.getRow(3).getCell(2));
 
+        int usedRows = sheet.getPhysicalNumberOfRows();
+
+        int lastUsedRow = sheet.getLastRowNum();
+
+        // TODO: 1 - Create a logic to print out Neena's name dynamically
+
+        for (int rowNum = 0; rowNum < usedRows; rowNum++) {
+            if(sheet.getRow(rowNum).getCell(0).toString().equals("Neena")){
+                System.out.println("Neena's name = " + sheet.getRow(rowNum).getCell(0));
+            }
+            
+        }
+        
     }
 }
