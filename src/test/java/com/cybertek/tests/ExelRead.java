@@ -49,6 +49,16 @@ public class ExelRead {
             }
             
         }
+
+        //TODO: Create a logic to print out Steven King's job
+        // Check for Steven's name, if  its Steven --> print out job-id
+        for (int rowNum = 0; rowNum < usedRows; rowNum++) {
+
+            if(sheet.getRow(rowNum).getCell(0).toString().equals("Steven")){
+                System.out.println("Steven's JOB_ID: " + sheet.getRow(rowNum).getCell(2).toString());
+            }
+
+        }
         
     }
 }
