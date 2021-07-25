@@ -6,7 +6,7 @@ import org.apache.poi.xssf.usermodel.XSSFWorkbook;
 import org.junit.Test;
 
 import java.io.FileInputStream;
-import java.io.FileNotFoundException;
+import java.io.IOException;
 
 public class ExelWrite {
 
@@ -15,7 +15,7 @@ public class ExelWrite {
     XSSFCell cell;
 
     @Test
-    public void excel_writing_test() throws FileNotFoundException {
+    public void excel_writing_test() throws IOException {
 
         String path = "SampleData.xlsx";
 
