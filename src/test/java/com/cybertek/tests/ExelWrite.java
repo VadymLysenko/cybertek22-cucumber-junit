@@ -43,7 +43,26 @@ public class ExelWrite {
         System.out.println("Before: " +adamsCell);
 
         // this method will override
-        adamsCell.setCellValue("MadamM");
+        adamsCell.setCellValue("Adam");
+
+        System.out.println("After: " + adamsCell);
+
+        //TODO: change Steven's name to Tom
+        for (int rowNum = 0; rowNum < sheet.getLastRowNum(); rowNum++) {
+            if(sheet.getRow(rowNum).getCell(0).toString().equals("Steven")){
+            sheet.getRow(rowNum).getCell(0).setCellValue("Tom");
+
+        }
+
+        }
+
+
+
+
+
+
+
+       // ==========================================
 
         // use fileOutputStream to push changes --> load the file to fileOutputStream
         FileOutputStream fileOutputStream = new FileOutputStream(path);
