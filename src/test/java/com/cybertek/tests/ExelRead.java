@@ -33,9 +33,7 @@ public class ExelRead {
         // 3 - select row and cell
         // Print out Steven's cell
         // Indexes start from 0
-        sheet.getRow(1).getCell(0);
-
-
+        System.out.println("sheet.getRow(1).getCell(0) = " + sheet.getRow(1).getCell(0));
 
 
     }
